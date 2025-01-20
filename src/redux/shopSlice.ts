@@ -10,7 +10,7 @@ const initialState: StoreState = {
 };
 
 export const shopSlice = createSlice({
-  name: "orebi",
+  name: "shop",
   initialState,
   reducers: {
     addToCart: (state, action) => {
