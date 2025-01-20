@@ -1,4 +1,6 @@
+import { Poppins } from "next/font/google";
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme"
 
 export default {
   content: [
@@ -8,10 +10,17 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily:{
+        sans:["Poppins", ...defaultTheme.fontFamily.sans],
+        display:["Poppins", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        primeColor: "#262626",
+        lighText: "#6D6D6D",
+      },
+      boxShadow: {
+        testShadow: "0px 0px 54px -13px rgba(0,0,0,0.7)",
+      }
     },
   },
   plugins: [],
