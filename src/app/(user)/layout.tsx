@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import PageButton from "@/components/PageButton";
 import "slick-carousel/slick/slick.css"
 import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 
 export const metadata: Metadata = {
   title: "Shopping Store | Best Place to Shop",
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-display">
+      <Layout>
         <NavBar />
-        <PageButton />
-        {children}
-        <Footer />
+          <PageButton />
+          {children}
+          <Footer />
+      </Layout>
       </body>
     </html>
   );
