@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+module.exports = {
+  eslint: {
+    dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+  },
+}
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
