@@ -13,7 +13,7 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
-          redirect_uri: "https://top-shelf-market.vercel.app/api/auth/callback/google",
+          redirect_uri: "https://top-shelf-market.vercel.app",
           
         },
       },
