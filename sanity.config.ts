@@ -9,8 +9,8 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 export default defineConfig({
   basePath:'/studio',
-  name: 'Shopping_Store',
-  title: 'Shopping Store',
+  name: 'TopshelfMarket',
+  title: 'TopShelf_Market',
   projectId,
   dataset,
   plugins: [structureTool(), visionTool()],

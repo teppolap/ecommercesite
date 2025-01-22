@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 import Layout from "@/components/Layout";
 
 export const metadata: Metadata = {
-  title: "Shopping Store | Best Place to Shop",
-  description: "Your trusted online shopping store",
+  title: "TopShelf Market",
+  description: "Where Quality Meets Variety",
 };
 
 export default function RootLayout({
