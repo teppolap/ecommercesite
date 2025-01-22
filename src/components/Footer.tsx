@@ -11,11 +11,6 @@ const Footer = () => {
             <AiOutlineCopyright />
           </span>
           Copyright 2024 | Shopping | All Rights Reserved |
-          <a href="https://reactbd.com/" target="_blank" rel="noreferrer">
-            <span className="ml-1 font-medium group-hover:text-primeColor">
-              Powered by ReactBD.com
-            </span>
-          </a>
         </p>
       </Container>
     </div>
