@@ -14,18 +14,11 @@ const authOptions = {
       authorization: {
         params: {
           redirect_uri: "https://top-shelf-market.vercel.app/api/auth/callback/google",
+          
         },
       },
     }),
   ],
-  callbacks: {
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      // Ensure the callback URL is correct
-      if (url.startsWith(baseUrl)) return url;
-      if (url.startsWith("/")) return new URL(url, baseUrl).toString();
-      return baseUrl;
-    },
-  },
 };
 
 const handler = NextAuth(authOptions);
