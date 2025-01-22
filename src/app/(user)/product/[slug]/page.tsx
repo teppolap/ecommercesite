@@ -4,7 +4,7 @@ import { client, urlFor } from "@/lib/client";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import { ProductProps } from "../../../../../type";
-import ProductInfo from "@/components/ProductInfo";
+import ProudctInfo from "@/components/ProductInfo";
 import { PortableText } from "@portabletext/react";
 import { RichText } from "@/components/RichText";
 
@@ -16,24 +16,21 @@ interface Props {
 
 export const generateStaticParams = async () => {
   const query = groq`*[_type == 'product']{
-    slug
-  }`;
+        slug
+    }`;
 
-  const slugs: { slug: { current: string } }[] = await client.fetch(query);
-  const slugRoutes = slugs.map((slug) => slug?.slug?.current);
-  return slugRoutes?.map((slug) => ({
+  const slugs: any = await client.fetch(query);
+  const slugRoutes = slugs.map((slug: any) => slug?.slug?.current);
+  return slugRoutes?.map((slug: string) => ({
     slug,
   }));
 };
 
-const specialOffersQuery = groq`*[_type == 'product' && position == 'On Sale']{
-  ...
-} | order(_createdAt asc)`;
+const specialOffersQuery = groq`*[_type == 'product' && position == 'on Sale']{
+    ...
+   } | order(_createdAt asc)`;
 
-const SinglePage = async (context: Props) => {
-  const { params } = context;
-  const slug = params.slug;
-
+const SinglePage = async ({ params: { slug } }: Props) => {
   const query = groq`*[_type == 'product' && slug.current == $slug][0]{
     ...
   }`;
@@ -49,7 +46,7 @@ const SinglePage = async (context: Props) => {
         </div>
         <div className="h-full xl:col-span-2">
           <Image
-            src={urlFor(product?.image)?.url() || "/placeholder.png"}
+            src={urlFor(product?.image).url()}
             alt="product image"
             className="w-full h-full object-contain"
             width={500}
@@ -57,7 +54,7 @@ const SinglePage = async (context: Props) => {
           />
         </div>
         <div className="w-full md:col-span-2 xl:col-span-3 xl:p-14 flex flex-col gap-6 justify-center">
-          <ProductInfo product={product} />
+          <ProudctInfo product={product} />
         </div>
       </div>
       <PortableText value={product?.body} components={RichText} />
