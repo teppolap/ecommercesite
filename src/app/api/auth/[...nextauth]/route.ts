@@ -14,7 +14,6 @@ const authOptions = {
       authorization: {
         params: {
           redirect_uri: "https://top-shelf-market.vercel.app/api/auth/callback/google",
-          
         },
       },
     }),
