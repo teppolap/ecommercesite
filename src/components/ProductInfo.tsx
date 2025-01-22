@@ -1,11 +1,26 @@
 "use client";
 import { ProductProps } from "../../type";
 import Price from "./Price";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 interface Props {
   product: ProductProps;
 }
-const ProudctInfo = ({ product }: Props) => {
+const ProductInfo = ({ product }: Props) => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  const handleBuyNow = () => {
+    if (status === "authenticated") {
+      // Redirect to cart page
+      router.push("/cart");
+    } else {
+      // Redirect to sign-in page with callback to cart
+      signIn(undefined, { callbackUrl: "/cart" });
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5">
       <h2 className="text-4xl font-semibold">{product?.title}</h2>
@@ -32,6 +47,12 @@ const ProudctInfo = ({ product }: Props) => {
       <button className="w-full py-4 bg-primeColor hover:bg-black duration-300 text-white text-lg rounded-md">
         Add to Cart
       </button>
+      <button
+        onClick={handleBuyNow}
+        className="w-full py-4 bg-primeColor hover:bg-black duration-300 text-white text-lg rounded-md"
+      >
+        Buy Now
+      </button>
       <p className="font-normal text-sm">
         <span className="text-base font-medium">Categories:</span> Spring
         collection, Streetwear, Women Tags: featured SKU: N/A
@@ -40,4 +61,4 @@ const ProudctInfo = ({ product }: Props) => {
   );
 };
 
-export default ProudctInfo;
+export default ProductInfo;
