@@ -7,7 +7,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession, signIn } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -36,6 +36,15 @@ const Navbar = () => {
       link: "/studio",
     },
   ];
+
+  const handleNavLinkClick = (link: string) => {
+    if (link === "/cart" && !session) {
+      signIn();
+    } else {
+      window.location.href = link;
+    }
+  };
+
   return (
     <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 sticky top-0 z-50">
       <nav className="h-full max-w-screen-xl mx-auto px-4 xl:px-0 flex items-center justify-between gap-2">
@@ -61,15 +70,15 @@ const Navbar = () => {
         </div>
         <div className="hidden md:inline-flex items-center gap-2">
           {navBarList.map((item) => (
-            <Link
-              href={item?.link}
-              key={item?.link}
+            <button
+              onClick={() => handleNavLinkClick(item.link)}
+              key={item.link}
               className={`flex hover:font-medium w-20 h-6 justify-center items-center px-12 text-gray-600 hover:underline underline-offset-4 decoration-[1px] hover:text-gray-950 md:border-r-[2px] border-r-gray-400 last:border-r-0 ${
-                pathname === item?.link && "text-gray-950 underline"
+                pathname === item.link && "text-gray-950 underline"
               }`}
             >
-              {item?.title}
-            </Link>
+              {item.title}
+            </button>
           ))}
           {session?.user && (
             <button

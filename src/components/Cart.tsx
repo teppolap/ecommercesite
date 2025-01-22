@@ -56,7 +56,7 @@ const Cart = () => {
         stripe?.redirectToCheckout({ sessionId: data.id });
       }
     } else {
-      toast.error("Please sign in to make Checkout");
+      toast.error("Please sign in to proceed to checkout");
     }
   };
 
