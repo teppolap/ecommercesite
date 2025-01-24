@@ -1,5 +1,7 @@
 # E-Commerce Site
 
+This is still a ONGOING project and will be developed further.
+
 A full-stack e-commerce web application built with modern technologies to provide users with a seamless shopping experience.
 
 ## Features
