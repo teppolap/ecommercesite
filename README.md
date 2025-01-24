@@ -1,6 +1,6 @@
 # E-Commerce Site
 
-A full-stack e-commerce web application built with modern technologies to provide users with a seamless shopping experience. This project demonstrates an efficient and scalable approach to designing, developing, and managing an e-commerce platform.
+A full-stack e-commerce web application built with modern technologies to provide users with a seamless shopping experience.
 
 ## Features
 
