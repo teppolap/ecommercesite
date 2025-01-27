@@ -29,7 +29,7 @@ export const POST = async (request: NextRequest) => {
       mode: "payment",
       success_url:
         "https://top-shelf-market.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: `${process.env.NEXTAUTH_URL}/cancel`,
+      cancel_url: `${process.env.NEXTAUTH_URL}/cart`,
       metadata: {
         email,
       },
