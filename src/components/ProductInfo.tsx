@@ -1,11 +1,22 @@
 "use client";
 import { ProductProps } from "../../type";
 import Price from "./Price";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/shopSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Props {
   product: ProductProps;
 }
-const ProudctInfo = ({ product }: Props) => {
+
+const ProductInfo = ({ product }: Props) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    toast.success(`${product?.title.substring(0, 12)}... added to cart`);
+  };
+
   return (
     <div className="flex flex-col gap-5">
       <h2 className="text-4xl font-semibold">{product?.title}</h2>
@@ -29,15 +40,27 @@ const ProudctInfo = ({ product }: Props) => {
         {product?.description}
       </p>
       <p className="text-sm text-gray-500">Be the first to leave a review.</p>
-      <button className="w-full py-4 bg-primeColor hover:bg-black duration-300 text-white text-lg rounded-md">
+      <button
+        onClick={handleAddToCart}
+        className="w-full py-4 bg-primeColor hover:bg-black duration-300 text-white text-lg rounded-md"
+      >
         Add to Cart
       </button>
       <p className="font-normal text-sm">
         <span className="text-base font-medium">Categories:</span> Spring
         collection, Streetwear, Women Tags: featured SKU: N/A
       </p>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#000",
+            color: "#fff",
+          },
+        }}
+      />
     </div>
   );
 };
 
-export default ProudctInfo;
+export default ProductInfo;
