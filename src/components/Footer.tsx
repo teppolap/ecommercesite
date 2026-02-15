@@ -10,7 +10,7 @@ const Footer = () => {
           <span className="text-md mr-[1px] mt-[2px] md:mt-0 text-center hidden md:inline-flex">
             <AiOutlineCopyright />
           </span>
-          Copyright 2024 | Shopping | All Rights Reserved |
+          Copyright 2026 | Shopping | All Rights Reserved |
         </p>
       </Container>
     </div>

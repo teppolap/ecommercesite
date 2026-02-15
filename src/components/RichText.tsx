@@ -23,13 +23,16 @@ export const RichText = {
   list: {
     bullet: ({ children }: any) => (
       <ul className="ml-10 py-5 space-y-5">
-        {React.Children.map(children, (child, index) => (
-          <li className="flex items-start" key={index}>
-            <IoArrowRedoOutline className="mr-2 w-6 mt-1 text-blue-600" />
-            {child}
-          </li>
-        ))}
+        {children}
       </ul>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li className="flex items-start">
+        <IoArrowRedoOutline className="mr-2 w-6 mt-1 text-blue-600 shrink-0" />
+        {children}
+      </li>
     ),
   },
   number: ({ children }: any) => (
