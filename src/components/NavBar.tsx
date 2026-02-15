@@ -23,6 +23,7 @@ const Navbar = () => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
 
@@ -183,7 +184,49 @@ const Navbar = () => {
             </button>
           )}
         </div>
-        <HiMenuAlt2 className="inline-flex md:hidden cursor-pointer w-8 h-6" />
+        <div className="relative inline-flex md:hidden">
+          <HiMenuAlt2
+            className="cursor-pointer w-8 h-6"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          />
+          {isMobileMenuOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40 bg-black/20"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-hidden
+              />
+              <div className="fixed top-20 right-4 z-50 w-56 bg-white border-[1px] border-gray-400 rounded-md shadow-lg py-2">
+                {navBarList.map((item) => (
+                  <button
+                    key={item.link}
+                    onClick={() => {
+                      handleNavLinkClick(item.link);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block w-full text-left px-4 py-3 text-gray-600 hover:bg-gray-100 hover:font-medium ${
+                      pathname === item.link ? "text-gray-950 font-medium bg-gray-50" : ""
+                    }`}
+                  >
+                    {item.title}
+                  </button>
+                ))}
+                {session?.user && (
+                  <button
+                    onClick={() => {
+                      signOut();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-3 text-gray-500 hover:bg-gray-100 hover:text-red-600"
+                  >
+                    Logout
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </nav>
     </div>
   );
