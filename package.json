@@ -13,7 +13,7 @@
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.69.0",
     "@stripe/stripe-js": "^5.5.0",
-    "next": "15.1.4",
+    "next": "15.1.11",
     "next-auth": "^4.24.11",
     "next-sanity": "^9.8.35",
     "react": "^19.0.0",
@@ -39,7 +39,7 @@
     "@types/react-slick": "^0.23.13",
     "@types/shallow-equals": "^1.0.3",
     "eslint": "^9",
-    "eslint-config-next": "15.1.4",
+    "eslint-config-next": "15.1.11",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
